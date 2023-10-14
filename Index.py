@@ -25,7 +25,7 @@ def read_items(yt_link):
 def run():
 	data=request.get_json()
 	yt= YouTube(data.link)
-	return data.[link]
+	return data[link]
 
 # Create an endpoint to get a specific item by ID
 @app.route('/items/<int:item_id>', methods=['GET'])
