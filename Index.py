@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_file
 from pytube import YouTube
 
 app = Flask(__name__)
@@ -20,7 +20,7 @@ def read_items(yt_link):
 
 #print(yt.streams.all()[0].url)
 	#return yt.streams.all()[0].url
-	return "y"
+	return send_file('/1.py')
 @app.route('/',methods=['POST'])
 def run():
 	data=request.get_json()
