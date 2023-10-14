@@ -1,5 +1,7 @@
 from flask import Flask, request, jsonify, send_file
 from pytube import YouTube
+from playwright.sync_api import sync_playwright
+
 
 app = Flask(__name__)
 
@@ -17,10 +19,16 @@ def create_item():
 @app.route('/<yt_link>', methods=['GET'])
 def read_items(yt_link):
 	#yt= YouTube(yt_link)
+        with sync_playwright() as p:
+        browser = p.chromium.launch()
+        page = browser.new_page()
+        page.goto('https://example.com')
+        page.screenshot(path='screenshot.png')
+        browser.close()
 
 #print(yt.streams.all()[0].url)
 	#return yt.streams.all()[0].url
-	return send_file('/1.py')
+	return "send_file('/1.py')"
 @app.route('/',methods=['POST'])
 def run():
 	data=request.get_json()
