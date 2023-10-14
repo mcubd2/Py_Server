@@ -25,10 +25,7 @@ def read_items(yt_link):
             page.goto('https://example.com')
             page.screenshot(path='screenshot.png')
             browser.close()
-
-#print(yt.streams.all()[0].url)
-	#return yt.streams.all()[0].url
-	return "send_file('/1.py')"
+		return "send_file('/1.py')"
 @app.route('/',methods=['POST'])
 def run():
 	data=request.get_json()
