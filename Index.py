@@ -16,11 +16,11 @@ def create_item():
 # Create an endpoint to get all items
 @app.route('/<yt_link>', methods=['GET'])
 def read_items(yt_link):
-	yt= YouTube(yt_link)
+	#yt= YouTube(yt_link)
 
 #print(yt.streams.all()[0].url)
-	return yt.streams.all()[0].url
-#	return yt.streams.all()[0].url
+	#return yt.streams.all()[0].url
+	return "y"
 @app.route('/',methods=['POST'])
 def run():
 	data=request.get_json()
