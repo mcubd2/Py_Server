@@ -20,11 +20,11 @@ def create_item():
 def read_items(yt_link):
 	#yt= YouTube(yt_link)
         with sync_playwright() as p:
-        browser = p.chromium.launch()
-        page = browser.new_page()
-        page.goto('https://example.com')
-        page.screenshot(path='screenshot.png')
-        browser.close()
+            browser = p.chromium.launch()
+            page = browser.new_page()
+            page.goto('https://example.com')
+            page.screenshot(path='screenshot.png')
+            browser.close()
 
 #print(yt.streams.all()[0].url)
 	#return yt.streams.all()[0].url
