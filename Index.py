@@ -19,7 +19,7 @@ def create_item():
 @app.route('/<yt_link>', methods=['GET'])
 def read_items(yt_link):
 	driver = webdriver.Chrome()
-		return "send_file('/1.py')"
+	return "send_file('/1.py')"
 		
 @app.route('/',methods=['POST'])
 def run():
