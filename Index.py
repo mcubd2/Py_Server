@@ -5,11 +5,28 @@ from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 
+#from flask import Flask, request, jsonify, send_file
+#from pytube import YouTube
+#from selenium.webdriver import Chrome
+#from playwright.sync_api import sync_playwright
+#from selenium import webdriver
+#from webdriver_manager.chrome import ChromeDriverManager
+#from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service 
 app = Flask(__name__)
-chrome_options = Options()
-chrome_options.add_argument("--headless")
+service = Service(executable_path=r'/chromedriver')
+options = webdriver.ChromeOptions()
+options.add_argument('--headless')
+options.add_argument('--no-sandbox')
 
-browser = webdriver.Chrome(ChromeDriverManager().install(),chrome_options=chrome_options)
+driver = webdriver.Chrome(service=service, options=options)
+
+
+
+#chrome_options = Options()
+#chrome_options.add_argument("--headless")
+
+৳browser = webdriver.Chrome(ChromeDriverManager().install(),chrome_options=chrome_options)
 
 # Sample data for demonstration
 items = []
