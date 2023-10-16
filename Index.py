@@ -26,7 +26,7 @@ driver = webdriver.Chrome(service=service, options=options)
 #chrome_options = Options()
 #chrome_options.add_argument("--headless")
 
-৳browser = webdriver.Chrome(ChromeDriverManager().install(),chrome_options=chrome_options)
+#browser = webdriver.Chrome(ChromeDriverManager().install(),chrome_options=chrome_options)
 
 # Sample data for demonstration
 items = []
