@@ -2,8 +2,14 @@ from flask import Flask, request, jsonify, send_file
 from pytube import YouTube
 from playwright.sync_api import sync_playwright
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.options import Options
 
 app = Flask(__name__)
+chrome_options = Options()
+chrome_options.add_argument("--headless")
+
+browser = webdriver.Chrome(ChromeDriverManager().install(),chrome_options=chrome_options)
 
 # Sample data for demonstration
 items = []
