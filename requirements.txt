@@ -3,4 +3,5 @@ pytube==15.0.0
 Werkzeug==2.2.2
 playwright==1.38.0
 selenium==4.14.0
+webdriver-manager==4.0.1
 
