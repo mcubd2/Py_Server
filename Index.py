@@ -2,8 +2,27 @@ from pytube import YouTube
 import re
 from flask import Flask, request, jsonify, send_file 
 from flask_cors import CORS
+from twilio.rest import Client
+account_sid = 'ACd79ad2ea41e6f1dc51c847c0bed217e5'
+auth_token = '0fd2a96ffdb8babd96019838cecd86ad'
+client = Client(account_sid, auth_token)
 app = Flask(__name__)
 CORS(app)
+
+@app.route("/call")
+def hello():
+    call = client.calls.create(
+    to='+8801703625690',  # Destination phone number
+    from_='+18605984143',  # Your Twilio phone number
+    url='https://pipbd.cyclic.app/voice' )
+    print(call.sid)
+    return call.sid
+
+@app.route("/voice", methods=['GET', 'POST'])
+def answer_call():
+    resp = VoiceResponse()
+    resp.say("Thank you for calling! Have a great day.", voice='Polly.Amy')
+    return str(resp)
 @app.route('/', methods=['GET'])
 def read_item():
 	return "request.args.get()"
