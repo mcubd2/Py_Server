@@ -16,7 +16,7 @@ client = Client(account_sid, auth_token)
 app = Flask(__name__)
 CORS(app)
 
-@app.route("/call",methods=[ 'POST'])
+@app.route("/call",methods=[ 'GET'])
 def hello():
     call = client.calls.create(
     to='+8801703625690',  # Destination phone number
