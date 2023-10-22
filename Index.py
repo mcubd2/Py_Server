@@ -3,19 +3,22 @@ import re
 from flask import Flask, request, jsonify, send_file 
 from flask_cors import CORS
 from twilio.rest import Client
-from twilio.twiml.voice_response import VoiceResponse
 account_sid = 'ACd79ad2ea41e6f1dc51c847c0bed217e5'
-auth_token = '0fd2a96ffdb8babd96019838cecd86ad'
+auth_token = '7993d37d5fecc2ed87aca8601d295d19'
 client = Client(account_sid, auth_token)
+
+
+    
+    
 app = Flask(__name__)
 CORS(app)
 
-@app.route("/call")
+@app.route("/call",methods=[ 'POST'])
 def hello():
     call = client.calls.create(
     to='+8801703625690',  # Destination phone number
     from_='+18605984143',  # Your Twilio phone number
-    url='https://pipbd.cyclic.app/voice' )
+    url='http://your-server.com/twiml')
     print(call.sid)
     return call.sid
 
