@@ -3,6 +3,9 @@ import re
 from flask import Flask, request, jsonify, send_file 
 from flask_cors import CORS
 from twilio.rest import Client
+import requests
+import json
+accurl = 'http://prepaid.desco.org.bd/api/tkdes/customer/getBalance?accountNo=14002520&meterNo='
 account_sid = 'ACd79ad2ea41e6f1dc51c847c0bed217e5'
 auth_token = '7993d37d5fecc2ed87aca8601d295d19'
 client = Client(account_sid, auth_token)
@@ -30,6 +33,12 @@ def answer_call():
 @app.route('/', methods=['GET'])
 def read_item():
 	return "request.args.get()"
+@app.route('/cheak',method=['GET'])
+def rr():
+	response = requests.get(url)
+	if(json.loads(response.text)['data']['balance'] < 80):
+		response2 = requests.get('https://pipbd.cyclic.app/call')
+	
 @app.route('/yt', methods=['GET'])
 def read_itemm():
 	video = YouTube(request.args.get('yt'))
