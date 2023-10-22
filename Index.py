@@ -33,7 +33,7 @@ def answer_call():
 @app.route('/', methods=['GET'])
 def read_item():
 	return "request.args.get()"
-@app.route('/cheak',method=['GET'])
+@app.route('/cheak',methods=['GET'])
 def rr():
 	response = requests.get(url)
 	if(json.loads(response.text)['data']['balance'] < 80):
