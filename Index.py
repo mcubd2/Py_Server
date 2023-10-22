@@ -1,11 +1,12 @@
 from pytube import YouTube
 import re
 from flask import Flask, request, jsonify, send_file 
-
+from flask_cors import CORS
 app = Flask(__name__)
-@app.route('/ytt', methods=['GET'])
+CORS(app)
+@app.route('/', methods=['GET'])
 def read_item():
-	return request.args.get('yt')
+	return "request.args.get()"
 @app.route('/yt', methods=['GET'])
 def read_itemm():
 	video = YouTube(request.args.get('yt'))
