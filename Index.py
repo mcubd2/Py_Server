@@ -35,11 +35,11 @@ def read_itemm():
 	if "720p" in resdict.keys():
 		mid=resdict['720p']
 		print(resdict['720p'])
-		return f"{mid}&title={title}", 201
+		return f"{mid}&title={title}"
 	else:
 		print(resdict['360p'])
 		low=resdict['360p']
 		print("360 bro")
-		return f"{low}&title={title}",204
+		return f"{low}&title={title}"
 				
 if __name__ == '__main__': app.run(debug=False)
