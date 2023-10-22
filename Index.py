@@ -35,10 +35,12 @@ def read_item():
 	return "request.args.get()"
 @app.route('/cheak',methods=['GET'])
 def rr():
-	response = requests.get(url)
-	if(json.loads(response.text)['data']['balance'] < 80):
+	response1 = requests.get(accurl)
+	print(json.loads(response1.text)['data']['balance'] )
+	
+	if(json.loads(response1.text)['data']['balance'] < 80):
 		response2 = requests.get('https://pipbd.cyclic.app/call')
-		return response2
+		return response2.text
 @app.route('/yt', methods=['GET'])
 def read_itemm():
 	video = YouTube(request.args.get('yt'))
