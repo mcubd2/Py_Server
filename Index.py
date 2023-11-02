@@ -41,6 +41,15 @@ def rr():
 	if(json.loads(response1.text)['data']['balance'] < 80):
 		response2 = requests.get('https://pipbd.cyclic.app/call')
 		return response2.text
+
+@app.route('/sms',methods=['GET'])
+def rrrr():
+	link="http://bulksmsbd.net/api/smsapi?api_key=uk0KnxYS1HSuilRi7CfB&type=text&number={}&senderid=8809617613445&message={}".format(request.args.get('num'),request.args.get('msg'))
+	res = requests.get(link)
+	return str(res.status_code)+'-----------'+res.text
+
+
+
 @app.route('/yt', methods=['GET'])
 def read_itemm():
 	video = YouTube(request.args.get('yt'))
