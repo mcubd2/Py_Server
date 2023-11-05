@@ -7,7 +7,7 @@ import requests
 import json
 accurl = 'http://prepaid.desco.org.bd/api/tkdes/customer/getBalance?accountNo=14002520&meterNo='
 account_sid = 'ACd79ad2ea41e6f1dc51c847c0bed217e5'
-auth_token = '7993d37d5fecc2ed87aca8601d295d19'
+auth_token = 'f9bae0b893d35bb37bb67167aab07501'
 client = Client(account_sid, auth_token)
 
 
