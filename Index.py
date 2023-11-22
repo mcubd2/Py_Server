@@ -5,6 +5,10 @@ from flask_cors import CORS
 from twilio.rest import Client
 import requests
 import json
+from telethon.sync import TelegramClient
+import threading
+import asyncio
+
 accurl = 'http://prepaid.desco.org.bd/api/tkdes/customer/getBalance?accountNo=14002520&meterNo='
 account_sid = 'ACd79ad2ea41e6f1dc51c847c0bed217e5'
 auth_token = 'a1f36d33daa11c81c883c06207ad717f'
@@ -15,6 +19,38 @@ client = Client(account_sid, auth_token)
     
 app = Flask(__name__)
 CORS(app)
+loop = asyncio.get_event_loop()
+api_id = '28863345'
+api_hash = '0dae6aefb121ac09f5c2d07f09493452'
+phone_number = '+8801703625690'
+
+client = TelegramClient('key', api_id, api_hash)
+
+
+async def fn():
+    async with client:
+        # Find Sakib's chat
+        dialog = await client.get_input_entity('@SHADHINA') 
+        
+        msgs = await client.get_messages(dialog, limit=1)
+
+        for msg in msgs:
+            print(msg.text)
+            # bd_tz = timezone('Asia/Dhaka')
+            utc_time = msg.date
+            # bd_time = utc_time.astimezone(bd_tz)
+            print(msg.date)
+            return msg.date.timestamp()
+            # print(f"{bd_time.strftime('%I:%M%p')}")
+            # current_time = datetime.now()
+            # formatted_time = current_time.strftime("%I:%M")  # Prints time in HH:MM:SS format
+            # print("date.now:"+ formatted_time)
+
+@app.route('/tmsg')
+def tmsg():
+    return str(loop.run_until_complete(fn()))
+
+
 
 @app.route("/call",methods=[ 'GET'])
 def hello():
