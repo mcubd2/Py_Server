@@ -11,7 +11,7 @@ import asyncio
 
 accurl = 'http://prepaid.desco.org.bd/api/tkdes/customer/getBalance?accountNo=14002520&meterNo='
 account_sid = 'ACd79ad2ea41e6f1dc51c847c0bed217e5'
-auth_token = 'a1f36d33daa11c81c883c06207ad717f'
+auth_token = 'f3e3ed1de8917ead69a8cbafd8f7eb92'
 client = Client(account_sid, auth_token)
 
 
