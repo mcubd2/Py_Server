@@ -85,6 +85,23 @@ def rrrr():
 	return str(res.status_code)+'-----------'+res.text
 
 
+@app.route('/yt2', methods=['GET'])
+def read_itemmn():
+    url = request.args.get('yt')
+    ydl_opts = {
+        'cookiefile': './cookies.txt'
+    }
+
+    with YoutubeDL(ydl_opts) as ydl:
+        info_dict = ydl.extract_info(url, download=False)
+        arr = info_dict['formats']
+        urls_720p = [obj.get("url") for obj in arr if obj.get("format_id") == "22"]
+        urls_360p = [obj.get("url") for obj in arr if obj.get("format_id") == "18"]
+
+        if(len(urls_720p)>0):
+            return  f"{urls_720p[0]}&title={info_dict['title']}"
+        elif(len(urls_360p)>0):
+            return  f"{urls_360p[0]}&title={info_dict['title']}"
 
 @app.route('/yt', methods=['GET'])
 def read_itemm():
