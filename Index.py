@@ -5,7 +5,6 @@ from flask_cors import CORS
 from twilio.rest import Client
 import requests
 import json
-from telethon.sync import TelegramClient
 import threading
 import asyncio
 
